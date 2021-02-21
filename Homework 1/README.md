@@ -43,3 +43,8 @@ A bilinear interpolation scheme was used so that surrounding "thrown-away" data 
     Done, Output: composites\greenest.tif
     Creating 85% Greenest Composite...
     Done, Output: composites\greenest85.tif
+
+## References
+
+ - Ernesto Colon
+ - [Sentinel 2 Cloud Masking](https://sentinel.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-1c/cloud-masks)
