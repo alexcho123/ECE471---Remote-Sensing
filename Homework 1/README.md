@@ -112,7 +112,7 @@ This is because the visible cloud has a very high NDSI value, one that visibly s
 
 ## References
 
- - Ernesto Colon
+ - [Ernesto Colon](https://github.com/ecolon08)
  - [Sentinel 2 Level 1C Cloud Masking](https://sentinel.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-1c/cloud-masks)
  - [Sentinel 2 Level 2A Cloud Masking](https://sentinel.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm)
  - [Relative Luminance](https://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color)
