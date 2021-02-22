@@ -1,7 +1,6 @@
 .idea/
 ratioTest.py
 tmp/
-s2_santafe_spatially_aligned/
 cloud_masked/
 
 # Byte-compiled / optimized / DLL files
