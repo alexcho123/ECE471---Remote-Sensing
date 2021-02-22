@@ -240,6 +240,7 @@ def makeMedian(data, path, geoTransform, projection):
               width, height, bands, geoTransform, projection)
 
 
+# Function to create Greenest composite
 def makeGreenest(data, path, geoTransform, projection):
     print("Creating Greenest Composite...")
     bands, height, width = data[0].shape
@@ -265,6 +266,7 @@ def makeGreenest(data, path, geoTransform, projection):
               width, height, bands, geoTransform, projection)
 
 
+# Function to create 85% Greenest composite
 def make85Greenest(data, path, geoTransform, projection):
     print("Creating 85% Greenest Composite...")
     bands, height, width = data[0].shape
