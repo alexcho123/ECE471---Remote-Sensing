@@ -11,11 +11,11 @@ A bilinear interpolation scheme was used so that surrounding "thrown-away" data 
 
 ## Task 2
 
-#### Histograms
+### Histograms
 
 ![](histogram.png)
 
-#### Cloud Masking Algorithm
+### Cloud Masking Algorithm
 
 The first implementation of the cloud mask followed the Sentintel 2 Level 2A Algorithm (Referenced Below).
 This algorithm executed based on the Level 1C data which was inferred to be provided based on the names of the files in the dataset and the band information.
@@ -37,7 +37,31 @@ In order to combat this, an NDBI ratio was also calculated and thresholded.
 This however, did not go well seeing as there were no clear distinctions between clouds and reflective urban areas in this value.
 The upside was that not only did the algorithm effectively mask dense, cloudy pixels, it also masked cloud shadows quite well.
 
-#### Finding the Greenest, Snowiest, Cloudiest, and Brightest Scenes
+#### Very Cloudy Scene
+
+|No Mask |  Mask|
+|--------|------|
+|![](6-3.PNG)  |  ![](6-3 Masked.PNG)|
+
+#### Minimal Cloudy Scene
+
+|No Mask |  Mask|
+|--------|------|
+|![](5-4.PNG)  |  ![](5-4 Masked.PNG)|
+
+#### Snowy Scene
+
+|No Mask |  Mask|
+|--------|------|
+|![](12-30.PNG)  |  ![](12-30 Masked.PNG)|
+
+#### Shadow Coverage
+
+|No Mask |  Mask|
+|--------|------|
+|![](11-28.PNG)  |  ![](11-28 Masked.PNG)|
+
+### Finding the Greenest, Snowiest, Cloudiest, and Brightest Scenes
 
 To determine the superlative scenes, mostly standard approaches were used.
 For example, for the Greenest and Snowiest scenes, the Normalized Difference Indexes were used for each pixel, the average was taken across all the valid, non-cloud pixels, and the max was chosen as the respective superlative.
@@ -48,7 +72,7 @@ It turned out that the Snowiest scene was also the Brightest scene.
 When determining (Greenest/Snowiest/Brightest) superlatives, ONLY valid and NON CLOUDY pixels were used, which creates a logical result.
 Seeing as Santa Fe is not incredibly urban, it is brightest when it is snowiest since snow is very reflective in terms of the visual spectrum.
 
-#### Creating the Mean, Min, Max, Median, Greenest, and 85% Greenest Composite
+### Creating the Mean, Min, Max, Median, Greenest, and 85% Greenest Composite
 
 Mostly standard computational methods were used.
 In the Mean Composite, there is from artifacting where the left half of the image is slightly brighter than the right (there is a slightly visible line down the middle).
@@ -57,7 +81,7 @@ This type of artifacting is not as present on the Median Composite since medians
 Additionally, the Max image contains a large cloud that thresholding could not efficiently resolve.
 This is because the visible cloud has a very high NDSI value, one that visibly snowy scenes did not quite match causing them to otherwise be identified as clouds.
 
-#### Output
+### Output
 
     Creating Histograms...
     Adding Cloud Mask...
