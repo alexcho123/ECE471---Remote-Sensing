@@ -2,8 +2,7 @@
 ratioTest.py
 tmp/
 s2_santafe_spatially_aligned/
-composites/
-cloudMasked/
+cloud_masked/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

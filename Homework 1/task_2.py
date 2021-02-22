@@ -12,10 +12,13 @@ from osgeo import gdal
 GeoTIF_dir = "s2_santafe_spatially_aligned"
 composites_dir = "composites"
 
+
 # Function that loads Spatially Aligned data into a list of numpy arrays for manipulation
 def loadImages(path):
     images = []
     labels = []
+    geoTransform = None
+    projection = None
     for GeoTIF in os.listdir(path):
         labels.append(path + '\\' + GeoTIF)
         dataset = gdal.Open(path + '\\' + GeoTIF)
@@ -29,7 +32,25 @@ def loadImages(path):
 
 # Function to plot histograms of data over time
 def createHistogram(data):
-    return
+    print("Creating Histograms...")
+    bands, height, width = data[0].shape
+    bands -= 1
+    bandNames = ["Red", "Green", "Blue", "NIR", "SWIR1", "SWIR2"]
+    bandColors = ["red", "green", "blue", "magenta", "aqua", "darkviolet"]
+    fig, axs = plt.subplots(2, 3)
+    axs = axs.ravel()
+    for c in range(bands):
+        values = []
+        for image in data:
+            for j in range(height):
+                for k in range(width):
+                    if image[6, j, k] > 0:
+                        values.append(image[c, j, k])
+        axs[c].hist(x=values, bins=10000, color=bandColors[c])
+        axs[c].set_title(bandNames[c] + " Band")
+        axs[c].set_xlabel("Intensity")
+        axs[c].set_ylabel("Count")
+    plt.show()
 
 
 # Function to create simple cloud mask
@@ -37,8 +58,8 @@ def createHistogram(data):
 #   0 -> Cloud Pixel
 #   65535 -> Valid Pixel
 #  [red, green, blue, nir, swir1, swir2, alpha, cloud mask]
-#  Source - https://sentinel.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-1c/cloud-masks
 def createCloudMask(data):
+    print("Adding Cloud Mask...")
     output = []
     for image in data:
         bands, height, width = image.shape
@@ -119,7 +140,7 @@ def findCloudiest(data, labels):
 
 
 # Function that uses relative luminance to determine brightest scene (does not include alpha/cloud masked pixels)
-# NDBI = .2123 * Red + .7152 * Green + .0722 * Blue
+# "NDBI" (Relative Luminance) = .2126 * Red + .7152 * Green + .0722 * Blue
 # Source for calculation: https://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color
 def findBrightest(data, labels):
     print("Finding Brightest Scene...")
@@ -204,7 +225,7 @@ def makeMedian(data, path, geoTransform, projection):
     bands, height, width = data[0].shape
     median = np.zeros((bands, height, width))
 
-    # Appends valid values of each band of each pixel to a list of lists, and sets the result each to the median
+    # Appends valid values of each band of each pixel to a list of lists, and sets the result equal to the median
     for j in range(height):
         for k in range(width):
             LoL = [[] for c in range(bands)]
@@ -233,6 +254,7 @@ def makeGreenest(data, path, geoTransform, projection):
             for image in data:
                 if image[6, j, k] > 0 and image[7, j, k] > 0:
                     NDVI[i] = (image[3, j, k] - image[0, j, k]) / (image[3, j, k] + image[0, j, k])
+                # If pixel is invalid/cloudy, set NDVI below minimum value
                 else:
                     NDVI[i] = -2
                 i += 1
@@ -257,6 +279,7 @@ def make85Greenest(data, path, geoTransform, projection):
             for image in data:
                 if image[6, j, k] > 0 and image[7, j, k] > 0:
                     NDVI[i] = (image[3, j, k] - image[0, j, k]) / (image[3, j, k] + image[0, j, k])
+                # If pixel is invalid/cloudy, set NDVI below minimum value
                 else:
                     NDVI[i] = -2
                 i += 1
@@ -286,15 +309,15 @@ def createTif(name, data, width, height, bands, geoTransform, projection):
 # Main execution to complete task 2
 if __name__ == "__main__":
     images, labels, geoTransform, projection = loadImages(GeoTIF_dir)
+    createHistogram(images)
     images = createCloudMask(images)
-    # createHistogram(images)
 
     findGreenest(images, labels)
     findSnowiest(images, labels)
     findCloudiest(images, labels)
     findBrightest(images, labels)
 
-    # Create necessary directories
+    # Create necessary directory
     try:
         os.mkdir(composites_dir)
     except:

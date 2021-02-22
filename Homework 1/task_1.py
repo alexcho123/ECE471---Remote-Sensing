@@ -53,6 +53,8 @@ def normData(srcPath, destPath):
         xResList.append(xRes)
         yResList.append(yRes)
 
+    # xRes are positive
+    # yRes are negative
     for GeoTIF in os.listdir(srcPath):
         gdal.Warp(destPath + '\\' + GeoTIF, srcPath + '\\' + GeoTIF,
                   xRes=max(xResList), yRes=min(yResList), resampleAlg=gdal.GRA_Bilinear)
@@ -61,6 +63,7 @@ def normData(srcPath, destPath):
 # Main execution to complete task 1
 if __name__ == "__main__":
     print("Creating Spatially Aligned data...")
+
     # Create necessary directories
     try:
         os.mkdir(align_dir)

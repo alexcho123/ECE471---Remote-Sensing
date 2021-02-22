@@ -7,7 +7,7 @@ from osgeo import gdal
 
 # Defining relative PATHs
 GeoTIF_dir = "s2_santafe_spatially_aligned"
-masked_dir = "cloudMasked"
+masked_dir = "cloud_masked"
 
 images = []
 labels = []
