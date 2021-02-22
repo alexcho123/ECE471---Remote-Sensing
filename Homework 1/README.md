@@ -41,25 +41,25 @@ The upside was that not only did the algorithm effectively mask dense, cloudy pi
 
 |No Mask |  Mask|
 |--------|------|
-|![](6-3.PNG)  |  ![](6-3 Masked.PNG)|
+|![](6-3.PNG)  |  ![](6-3%20Masked.PNG)|
 
 #### Minimal Cloudy Scene
 
 |No Mask |  Mask|
 |--------|------|
-|![](5-4.PNG)  |  ![](5-4 Masked.PNG)|
+|![](5-4.PNG)  |  ![](5-4%20Masked.PNG)|
 
 #### Snowy Scene
 
 |No Mask |  Mask|
 |--------|------|
-|![](12-30.PNG)  |  ![](12-30 Masked.PNG)|
+|![](12-30.PNG)  |  ![](12-30%20Masked.PNG)|
 
 #### Shadow Coverage
 
 |No Mask |  Mask|
 |--------|------|
-|![](11-28.PNG)  |  ![](11-28 Masked.PNG)|
+|![](11-28.PNG)  |  ![](11-28%20Masked.PNG)|
 
 ### Finding the Greenest, Snowiest, Cloudiest, and Brightest Scenes
 
