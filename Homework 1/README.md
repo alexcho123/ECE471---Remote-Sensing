@@ -13,7 +13,7 @@ A bilinear interpolation scheme was used so that surrounding "thrown-away" data 
 
 ### Histograms
 
-![](cover/histogram.png)
+![](front/histogram.png)
 
 ### Cloud Masking Algorithm
 
@@ -41,25 +41,25 @@ The upside was that not only did the algorithm effectively mask dense, cloudy pi
 
 |No Mask |  Mask|
 |--------|------|
-|![](cover/6-3.PNG)  |  ![](cover/6-3%20Masked.PNG)|
+|![](front/6-3.PNG)  |  ![](front/6-3%20Masked.PNG)|
 
 #### Minimal Cloudy Scene
 
 |No Mask |  Mask|
 |--------|------|
-|![](cover/5-4.PNG)  |  ![](cover/5-4%20Masked.PNG)|
+|![](front/5-4.PNG)  |  ![](front/5-4%20Masked.PNG)|
 
 #### Snowy Scene
 
 |No Mask |  Mask|
 |--------|------|
-|![](cover/12-30.PNG)  |  ![](cover/12-30%20Masked.PNG)|
+|![](front/12-30.PNG)  |  ![](front/12-30%20Masked.PNG)|
 
 #### Shadow Coverage
 
 |No Mask |  Mask|
 |--------|------|
-|![](cover/11-28.PNG)  |  ![](cover/11-28%20Masked.PNG)|
+|![](front/11-28.PNG)  |  ![](front/11-28%20Masked.PNG)|
 
 ### Finding the Greenest, Snowiest, Cloudiest, and Brightest Scenes
 
